@@ -3,4 +3,4 @@ sonnette d'entrée constituée de 5 tubes de cuivre avec des pic-bois sculpté u
 
 ## dessin de conception
 
-![docs/concept drawing](docs/tubular-door-bell.png)
+![concept drawing](docs/tubular-door-bell.png)
