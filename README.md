@@ -4,3 +4,8 @@ sonnette d'entrée constituée de 5 tubes de cuivre avec des pic-bois sculpté u
 ## dessin de conception
 
 ![concept drawing](docs/tubular-door-bell.png)
+
+## Ressources utiles
+
+* Site de Lee Hite sur les [tubular wind chime](http://leehite.org/Chimes.htm)
+
