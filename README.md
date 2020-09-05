@@ -15,6 +15,11 @@ Modification au circuit pour ajouter une LED pour chaque note.
 
 ![shmématique](docs/tubular-door-bell-schematic.png)
 
+#### 2020-09-05
+
+Les pic-bois sont complétés et j'ai reçus les servo-moteurs. J'ai filmer un [court vidéo](https://youtu.be/YS0n4aLLaUM) d'un test de marteau sur un des tubes. Ça ne sonne pas très fort cependant.  
+
+
 #### 2020-09-02
 
 Ajout du schéma électronique
