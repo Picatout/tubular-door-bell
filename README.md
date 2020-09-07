@@ -15,6 +15,13 @@ Modification au circuit pour ajouter une LED pour chaque note.
 
 ![shmématique](docs/tubular-door-bell-schematic.png)
 
+#### 2020-09-06
+
+Aujourd'hui j'ai vérifié la sonorité des tubes une fois installé sur la planche. Mais ça ne fonctionne pas du tout. Si on se réfère au dessin de conception ci haut les tubes étaient maintenue sur 2 barres transversales par des vis passant à travers ceux-ci. Ce n'est pas fonctionnel ça amortie complètement les vibrations du tube. Donc je dois modifier complètement le concept. Les tubes doivent-être en suspension. Voici le nouveau concept. 
+![concept révisé](docs/tubular-door-bell-concept-revised.png)
+
+La planche est remplacée par un cadre au milieu duquel sont suspendus les tubes par des ficelles. Ce n'est pas apparent sur le dessin mais il y aura une ficelle à chaque extrémité des tubes. Les ficelles seront suffisamment tendues pour empêcher les tubes de se balancer. Les servo-moteurs et les pic-bois marteaux seront en bas.
+
 #### 2020-09-05
 
 Les pic-bois sont complétés et j'ai reçus les servo-moteurs. J'ai filmer un [court vidéo](https://youtu.be/YS0n4aLLaUM) d'un test de marteau sur un des tubes. Ça ne sonne pas très fort cependant.  
