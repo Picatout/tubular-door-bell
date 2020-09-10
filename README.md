@@ -9,11 +9,13 @@ sonnette d'entrée constituée de 5 tubes de cuivre avec des pic-bois sculpté u
 
 * Site de Lee Hite sur les [tubular wind chime](http://leehite.org/Chimes.htm)
 
-#### 2020-09-03
-
-Modification au circuit pour ajouter une LED pour chaque note. 
-
 ![shmématique](docs/tubular-door-bell-schematic.png)
+
+#### 2020-09-09
+
+Assemblage mécanique complété. 
+
+![assemblage mécanique](docs/assemblage-mécanique.png)
 
 #### 2020-09-06
 
@@ -26,6 +28,10 @@ La planche est remplacée par un cadre au milieu duquel sont suspendus les tubes
 
 Les pic-bois sont complétés et j'ai reçus les servo-moteurs. J'ai filmer un [court vidéo](https://youtu.be/YS0n4aLLaUM) d'un test de marteau sur un des tubes. Ça ne sonne pas très fort cependant.  
 
+
+#### 2020-09-03
+
+Modification au circuit pour ajouter une LED pour chaque note. 
 
 #### 2020-09-02
 
