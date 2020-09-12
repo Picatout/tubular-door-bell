@@ -281,11 +281,11 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    6500 4200
 	1    0    0    -1  
 $EndComp
-Text Label 7100 4400 0    39   ~ 0
+Text Label 7100 4200 0    39   ~ 0
 SM1
-Text Label 7100 4500 0    39   ~ 0
+Text Label 7100 4100 0    39   ~ 0
 SM2
-Text Label 7100 4600 0    39   ~ 0
+Text Label 7100 4000 0    39   ~ 0
 SM3
 Text Label 5900 3900 2    39   ~ 0
 SM4
@@ -494,7 +494,7 @@ F 1 "C" H 3793 2986 50  0000 C CNN
 F 2 "" H 3800 3150 50  0001 C CNN
 F 3 "~" H 3800 3150 50  0001 C CNN
 	1    3800 3150
-	1    0    0    -1  
+	-1   0    0    1   
 $EndComp
 $Comp
 L Device:LED D3
@@ -505,7 +505,7 @@ F 1 "D" H 3793 3386 50  0000 C CNN
 F 2 "" H 3800 3550 50  0001 C CNN
 F 3 "~" H 3800 3550 50  0001 C CNN
 	1    3800 3550
-	1    0    0    -1  
+	-1   0    0    1   
 $EndComp
 $Comp
 L Device:LED D4
@@ -516,7 +516,7 @@ F 1 "E" H 3793 3786 50  0000 C CNN
 F 2 "" H 3800 3950 50  0001 C CNN
 F 3 "~" H 3800 3950 50  0001 C CNN
 	1    3800 3950
-	1    0    0    -1  
+	-1   0    0    1   
 $EndComp
 $Comp
 L Device:LED D5
@@ -527,7 +527,7 @@ F 1 "G" H 3793 4136 50  0000 C CNN
 F 2 "" H 3800 4300 50  0001 C CNN
 F 3 "~" H 3800 4300 50  0001 C CNN
 	1    3800 4300
-	1    0    0    -1  
+	-1   0    0    1   
 $EndComp
 $Comp
 L Device:LED D6
@@ -538,7 +538,7 @@ F 1 "A" H 3793 4536 50  0000 C CNN
 F 2 "" H 3800 4700 50  0001 C CNN
 F 3 "~" H 3800 4700 50  0001 C CNN
 	1    3800 4700
-	1    0    0    -1  
+	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R R5
@@ -606,20 +606,6 @@ Connection ~ 3150 3950
 Wire Wire Line
 	3150 4300 3150 4700
 Connection ~ 3150 4300
-$Comp
-L power:GND #PWR03
-U 1 1 5F53768C
-P 3150 5000
-F 0 "#PWR03" H 3150 4750 50  0001 C CNN
-F 1 "GND" H 3155 4827 50  0000 C CNN
-F 2 "" H 3150 5000 50  0001 C CNN
-F 3 "" H 3150 5000 50  0001 C CNN
-	1    3150 5000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3150 5000 3150 4700
-Connection ~ 3150 4700
 Wire Wire Line
 	3450 3150 3650 3150
 Wire Wire Line
@@ -630,8 +616,6 @@ Wire Wire Line
 	3450 4300 3650 4300
 Wire Wire Line
 	3450 4700 3650 4700
-Wire Wire Line
-	3950 4700 4550 4700
 Wire Wire Line
 	3950 3950 4350 3950
 Wire Wire Line
@@ -660,16 +644,16 @@ Text Notes 8800 4500 0    50   ~ 0
 G
 Text Notes 8800 5000 0    50   ~ 0
 A
-Text Notes 3850 3150 0    50   ~ 0
+Text Notes 3600 3150 0    50   ~ 0
 RED
-Text Notes 3850 3550 0    50   ~ 0
+Text Notes 3450 3550 0    50   ~ 0
 ORANGE
-Text Notes 3850 3950 0    50   ~ 0
+Text Notes 3500 3950 0    50   ~ 0
 GREEN
-Text Notes 3850 4300 0    50   ~ 0
+Text Notes 3550 4700 0    50   ~ 0
 BLUE
-Text Notes 3850 4700 0    50   ~ 0
-WHITE
+Text Notes 3450 4300 0    50   ~ 0
+YELLOW
 Text Notes 7100 2400 0    50   ~ 0
 GREEN
 $Comp
@@ -685,24 +669,6 @@ F 3 "~" H 7550 2700 50  0001 C CNN
 $EndComp
 Text Notes 7100 7050 0    79   ~ 0
 tubular door bell\nJacques Deschênes\n2020-09-09\nversion 1.0
-Wire Wire Line
-	4550 4700 4550 5050
-Wire Wire Line
-	4550 5050 5450 5050
-Wire Wire Line
-	5450 5050 5450 4700
-Wire Wire Line
-	5450 4700 5900 4700
-Wire Wire Line
-	4600 4300 4600 5000
-Wire Wire Line
-	4600 5000 5400 5000
-Wire Wire Line
-	5400 5000 5400 4600
-Wire Wire Line
-	5400 4600 5900 4600
-Wire Wire Line
-	3950 4300 4600 4300
 $Comp
 L Device:C C6
 U 1 1 5F5DC7B8
@@ -803,4 +769,14 @@ $EndComp
 Connection ~ 5200 4400
 Wire Wire Line
 	5500 4400 5900 4400
+Text Label 3150 3150 2    50   ~ 0
+Vdd
+Text Label 3950 4300 0    50   ~ 0
+YLED
+Text Label 7100 3700 0    50   ~ 0
+BLED
+Text Label 3950 4700 0    50   ~ 0
+BLED
+Text Label 7100 3600 0    50   ~ 0
+YLED
 $EndSCHEMATC
