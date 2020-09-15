@@ -11,6 +11,13 @@ sonnette d'entrée constituée de 5 tubes de cuivre avec des pic-bois sculpté u
 
 ![shmématique](docs/tubular-door-bell-schematic.png)
 
+
+#### 2020-09 14
+
+* Travail sur l'assemblage électronique. Ajout des 5 LEDs. Ne reste que l'alimentation à assembler.
+
+* Travail sur l'application écrite en forth dans le fichier doorbell.f
+
 #### 2020-09-11
 
 Débuté assemblage de l'électronique. Programmé stm8_eForth sur le MCU stm8s105k6b6 

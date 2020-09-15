@@ -648,11 +648,11 @@ Text Notes 3600 3150 0    50   ~ 0
 RED
 Text Notes 3450 3550 0    50   ~ 0
 ORANGE
-Text Notes 3500 3950 0    50   ~ 0
+Text Notes 3500 4300 0    50   ~ 0
 GREEN
 Text Notes 3550 4700 0    50   ~ 0
 BLUE
-Text Notes 3450 4300 0    50   ~ 0
+Text Notes 3450 3950 0    50   ~ 0
 YELLOW
 Text Notes 7100 2400 0    50   ~ 0
 GREEN
@@ -772,11 +772,33 @@ Wire Wire Line
 Text Label 3150 3150 2    50   ~ 0
 Vdd
 Text Label 3950 4300 0    50   ~ 0
-YLED
+GLED
 Text Label 7100 3700 0    50   ~ 0
 BLED
 Text Label 3950 4700 0    50   ~ 0
 BLED
 Text Label 7100 3600 0    50   ~ 0
-YLED
+GLED
+$Comp
+L Switch:SW_DPST_x2 SW2
+U 1 1 5F617303
+P 4550 4400
+F 0 "SW2" H 4550 4635 50  0000 C CNN
+F 1 "reset" H 4550 4544 50  0000 C CNN
+F 2 "" H 4550 4400 50  0001 C CNN
+F 3 "~" H 4550 4400 50  0001 C CNN
+	1    4550 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR03
+U 1 1 5F617C90
+P 4350 4400
+F 0 "#PWR03" H 4350 4150 50  0001 C CNN
+F 1 "GND" H 4355 4227 50  0000 C CNN
+F 2 "" H 4350 4400 50  0001 C CNN
+F 3 "" H 4350 4400 50  0001 C CNN
+	1    4350 4400
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
