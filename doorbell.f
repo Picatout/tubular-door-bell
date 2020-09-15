@@ -3,8 +3,46 @@
 \   stm8_eForth
 \ ***************************************
 
+\ Peripherals usage:
+\ TIMER1 CHANNEL 1 PŴM SERVO-MOTOR SW1 OUTPUT ON PC1 PIN 23
+\ TIMER1 CHANNEL 2 PWM SERVO-MOTOR SW2 OUTPUT ON PC2 PIN 24
+\ TIMER1 CHANNEL 3 PWM SERVO-MOTOR SW3 OUTPUT ON PC3 PIN 25
+\ TIMER2 CHANNEL 1 PWM SERVO-MOTOR SW4 OUTPUT ON PD4 PIN 2
+\ TIMER2 CHANNEL 2 PWM SERVO-MOTOR SW5 OUTPUT ON PD3 PIN 1
+\ RED LED ON PD0 PIN 30
+\ ORANGE LED ON PD1 PIN 31
+\ YELLOW LED ON PD2 PIN 32
+\ GREEN LED ON PC6 PIN 29 
+\ BLUE LED ON PC7 PIN 28 
+\ RING BUTTON ON PF4 PIN 13
+\ RESET BUTTON ON NRST pin 6 
+\ SWIM SIGNAL ON PIN 31
+\ *************************************************************
+
 \ REMOVE COMMENT ON NEXT LINE WHEN READY TO FLASH
 \ TO-FLASH 
+
+\ PORT C REGISTERS
+$500A DUP CONSTANT PC-ODR \ OUTPUT DATA REG.
+1+ DUP CONSTANT PC-IDR \ INPUT DATA REG.
+1+ DUP CONSTANT PC-DDR \ DATA DIRECTION REG.
+1+ DUP CONSTANT PC-CR1 \ CONTROL REG. 1
+1+ DUP CONSTANT PC-CR2 \ CONTROL REG. 2
+
+\ PORT D REGISTERS
+$500F DUP CONSTANT PD-ODR \ OUTPUT DATA REG.
+1+ DUP CONSTANT PD-IDR \ INPUT DATA REG.
+1+ DUP CONSTANT PD-DDR \ DATA DIRECTION REG.
+1+ DUP CONSTANT PD-CR1 \ CONTROL REG. 1
+1+ DUP CONSTANT PD-CR2 \ CONTROL REG. 2
+
+\ PORT F REGISTERS
+$5019 DUP CONSTANT PF-ODR \ OUTPUT DATA REG.
+1+ DUP CONSTANT PF-IDR \ INPUT DATA REG.
+1+ DUP CONSTANT PF-DDR \ DATA DIRECTION REG.
+1+ DUP CONSTANT PF-CR1 \ CONTROL REG. 1
+1+ DUP CONSTANT PF-CR2 \ CONTROL REG. 2
+
 
 \ TIMER 1 REGISTERS
 $5250 DUP CONSTANT T1-CR1 \ CONTROL REGISTER 1
@@ -64,27 +102,66 @@ $5300 DUP CONSTANT T2-CR1 \ CONTROL REGISTER 1
 1+ DUP CONSTANT T2-CCR3L \ CAPTURE/COMPARE VALUE CH. 3 LOW
 
 : BSET ( b a -- ) \ set register bit
-DUP C@ ROT 1 SWAP LSHIFT OR SWAP C! ;
+    DUP C@ ROT 1 SWAP LSHIFT OR SWAP C! ;
 
 : BRES ( b a -- ) \ reset register bit
-DUP C@ ROT 1 SWAP LSHIFT NOT AND SWAP C! ;
+    DUP C@ ROT 1 SWAP LSHIFT NOT AND SWAP C! ;
+
+: BREAD ( b a -- 0|1 ) \ read register bit
+    OVER >R C@ 1 ROT LSHIFT AND R> RSHIFT ;
+
 
 : BTOGL ( b a -- ) \ toggle register bit
-DUP C@ ROT 1 SWAP LSHIFT XOR SWAP C! ; 
+    DUP C@ ROT 1 SWAP LSHIFT XOR SWAP C! ; 
 
 : R16! ( n a -- ) \ set 16 bits register value
-OVER 8 RSHIFT OVER C! 1+ C! ;
+    OVER 8 RSHIFT OVER C! 1+ C! ;
 
 : PWM-PER ( fr -- u ) \ compute ARR value from frequency
- 31250 64 ( fr -- fr 31250 64 ) 
- ROT ( -- 31250 64 fr )
- DUP ( --  31250 64 fr fr ) 
- 2/ ( --  31250 64 fr fr/2 )
- >R ( --  31250 64 fr ) ( R: -- fr/2 ) 
- */MOD ( -- r q ) \ 31250*8/fr -> remainder and quotient
- SWAP ( -- q r ) \ remainder on top 
- R>   ( -- q r fr/2 ) \ round to nearest integer 
- /    ( -- q 0|1 ) \ 
- + ( -- u ) \ nearest integer
- ; 
+    31250 64 ( fr -- fr 31250 64 ) 
+    ROT ( -- 31250 64 fr )
+    DUP ( --  31250 64 fr fr ) 
+    2/ ( --  31250 64 fr fr/2 )
+    >R ( --  31250 64 fr ) ( R: -- fr/2 ) 
+    */MOD ( -- r q ) \ 31250*8/fr -> remainder and quotient
+    SWAP ( -- q r ) \ remainder on top 
+    R>   ( -- q r fr/2 ) \ round to nearest integer 
+    /    ( -- q 0|1 ) \ 
+    + ( -- u ) \ nearest integer
+; 
+
+: INIT-LED-OUTPUT ( -- ) \ initialize LED pins in output mode.
+    3 6 LSHIFT PC-ODR 2DUP C! 2 + C! \ PC6|PC7 GREEN|BLUE
+    7 PD-ODR 2DUP C! 2 + SWAP 32 + SWAP C! \ PD0|PD1|PD2 RED|ORAGANGE|YELLOW 
+;
+
+: LED-TEST ( -- ) \ LIGHT LEDS in sequence 
+    2 FOR 2 I - PD-ODR 2DUP BRES 300 PAUSE BSET NEXT \ RED-ORANGE-YELLOW
+    1 FOR 7 I - PC-ODR 2DUP BRES 300 PAUSE BSET NEXT \ GREEN-BLUE
+;
+
+: INIT-TIMERS ( -- ) \ initialize TIMER1 and TIMER2 in PMW mode.
+
+;
+
+: APP-INIT ( -- ) \ initialize application peripherals.
+    INIT-LED-OUTPUT
+    LED-TEST
+    INIT-TIMERS
+;
+
+: RING? ( -- 0|1 ) \ check ring button on PF4
+    4 PF-IDR BREAD ;
+
+: RING ( -- ) \ sound tubular bells.
+
+;
+
+: DOORBELL
+    APP-INIT
+    BEGIN
+    RING? NOT IF RING THEN
+    AGAIN
+; 
+
 
