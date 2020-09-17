@@ -21,7 +21,19 @@ Maintenant stm8 eForth est programmé dans le MCU. Il faut un émulateur de term
 <br><br>
 ![configuration port GTKTerm](docs/config_gtkterm.png). 
 <br><br>
-Le délais 100 msec à la fin de chaque ligne transmise au terminal est nécessaire dans l'étape suivante pour que le forth est le temps de compiler avant la réception de la ligne suivante.
+
+### Modificiation à la procédure
+
+* Le transfert en via GTKTerm du fichier source vers le MCU ne fonctionne pas correctement. GTKTerm s'arrête après avoir transmit 4096 octets. J'ai donc du créer un petit utilitaire de ligne de commande pour faire le transfert de l'application **doorbell.f** la procédure est la suivante. 
+```
+tubular-door-bell>cd SendFile
+SendFile>./SendFile -s /dev/ttyS0 ../doorbell.f
+port=/dev/ttyS0, baud=115200,delay=100 file=../doorbell.f
+Sending file ../doorbell.f
+168 lines sent
+SendFile>
+
+```
 
 * L'application forth **doorbell.f** doit maintenant être programmée dans le MCU. Ça se fait par le transfert du fichier **doorbell.f**.<br>**Attention** j'ai édité ce fichier dans **geany** avec des fin de lignes **CR/LF** pour que le transfert s'effectue correctement. Le transfert se fait avec la commande *file -&gt; send raw file* dans GTKTerm. 
 
