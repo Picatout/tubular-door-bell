@@ -24,7 +24,7 @@ Maintenant stm8 eForth est programmé dans le MCU. Il faut un émulateur de term
 
 ### Modificiation à la procédure
 
-* Le transfert en via GTKTerm du fichier source vers le MCU ne fonctionne pas correctement. GTKTerm s'arrête après avoir transmit 4096 octets. J'ai donc du créer un petit utilitaire de ligne de commande pour faire le transfert de l'application **doorbell.f** la procédure est la suivante. 
+* Le transfert via GTKTerm du fichier source vers le MCU ne fonctionne pas correctement. GTKTerm s'arrête après avoir transmit 4096 octets. J'ai donc du créer un petit utilitaire de ligne de commande pour faire le transfert de l'application **doorbell.f** la procédure est la suivante. 
 ```
 tubular-door-bell>cd SendFile
 SendFile>./SendFile -s /dev/ttyS0 ../doorbell.f
@@ -35,9 +35,7 @@ SendFile>
 
 ```
 
-* L'application forth **doorbell.f** doit maintenant être programmée dans le MCU. Ça se fait par le transfert du fichier **doorbell.f**.<br>**Attention** j'ai édité ce fichier dans **geany** avec des fin de lignes **CR/LF** pour que le transfert s'effectue correctement. Le transfert se fait avec la commande *file -&gt; send raw file* dans GTKTerm. 
-
-* Il y a un commentaire **\ TO-FLASH**  au début du fichier **doorbell.f**. Il faut enlevé le *back slash* pour que l'application soit compilée en mémoire flash. Autrement elle sera compilée en mémoire RAM. 
+* L'application forth **doorbell.f** doit maintenant être programmée dans le MCU. Ça se fait par le transfert du fichier **doorbell.f**.<br>**Attention** j'ai édité ce fichier dans **geany** avec des fin de lignes **CR/LF** pour que le transfert s'effectue correctement. Le transfert se fait avec la commande SendFile.
 
 * Une fois l'application compilée en mémoire flash il faut dans le terminal eForth faire la commande 
 ```
