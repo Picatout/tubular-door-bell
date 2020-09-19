@@ -1,3 +1,11 @@
+#### 2020-09-18
+
+* retravaillé sur SendFile pour enlevé blancs et commentaire du fichier source avant de l'envoyer au MCU.
+
+* Travail sur [application doorbell](doorbell.f), presque complété.
+
+* Ajout de photos.
+
 #### 2020-09-17
 
 Le transfert du fichier Forth vers le MCU ne fonctionnant pas correctement j'ai du créer un petit utilitaire de ligne de commande pour faire le transfert. Il s'agit d'un projet séparé ajouté comme sous-module à ce projet dans le dossier SendFile.
