@@ -1,3 +1,12 @@
+#### 2020-09-19
+
+* L'application est complétée. J'ai divisé le code en 2 fichiers:
+    * **stm8s105.f** contient les définitions spécifiques au MCU utilisé pour cette application. 
+    * **doorbell.f** Contient l'application elle-même. 
+
+* J'ai placé un très court [vidéo](https://youtu.be/8ZqvEC9fbHs) sur youtube qui montre la sonnette en action. 
+  Je considère ce projet comme un échec car le volume sonore est trop faible pour servir de sonette d'entrée.
+
 #### 2020-09-18
 
 * retravaillé sur SendFile pour enlevé blancs et commentaire du fichier source avant de l'envoyer au MCU.

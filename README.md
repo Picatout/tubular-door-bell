@@ -17,25 +17,22 @@ sonnette d'entrée constituée de 5 tubes de cuivre avec des pic-bois sculpté u
 ```
 make -f door-bell.mk eforth
 ```
-Maintenant stm8 eForth est programmé dans le MCU. Il faut un émulateur de terminal. Je travaille en Ubuntu 20.04 LTS et j'utilise GTKTerm comme émulateur de terminal. Sur mon PC le port utilisé pour communiqué avec le MCU via le UART2 est **/dev/ttyS0**. Voici la configuration du port dans GTKTerm. **NOTE:** la version du programmeur **STLINK** est indiquée dans le fichier **door-bell.mk**.
+Maintenant stm8 eForth est programmé dans le MCU. Il faut un émulateur de terminal. Je travaille en Ubuntu 20.04 LTS et j'utilise GTKTerm comme émulateur de terminal. Sur mon PC le port utilisé pour communiqué avec le MCU via le UART2 est **/dev/ttyS0**. Voici la configuration du port dans GTKTerm. **NOTE:** la version du programmeur **STLINK** doit-être spécifiée dans le fichier **door-bell.mk**.
 <br><br>
 ![configuration port GTKTerm](docs/config_gtkterm.png). 
 <br><br>
 
-### Modificiation à la procédure
+### Programmation de l'application
 
-* Le transfert via GTKTerm du fichier source vers le MCU ne fonctionne pas correctement. GTKTerm s'arrête après avoir transmit 4096 octets. J'ai donc du créer un petit utilitaire de ligne de commande pour faire le transfert de l'application **doorbell.f** la procédure est la suivante. 
-```
-tubular-door-bell>cd SendFile
-SendFile>./SendFile -s /dev/ttyS0 ../doorbell.f
-port=/dev/ttyS0, baud=115200,delay=100 file=../doorbell.f
-Sending file ../doorbell.f
-168 lines sent
-SendFile>
+* L'application en elle-même comprend 2 fichiers source Forth. 
+    * **stm8s105.f** 
+    * **doorbell.f**
+Il doivent-être programmés dans cet ordre. J'ai créé un petit utilitaire de ligne de commande pour flasher les programmes Forth qui s'appelle **SendFile**. 
 
 ```
-
-* L'application forth **doorbell.f** doit maintenant être programmée dans le MCU. Ça se fait par le transfert du fichier **doorbell.f**.<br>**Attention** j'ai édité ce fichier dans **geany** avec des fin de lignes **CR/LF** pour que le transfert s'effectue correctement. Le transfert se fait avec la commande SendFile.
+tubular-door-bell>SendFile/Sendfile -s /dev/ttyS0 stm8s105.f
+tubular-door-bell>SendFile/SendFile -s /dev/ttyS0 doorbell.f
+```
 
 * Une fois l'application compilée en mémoire flash il faut dans le terminal eForth faire la commande 
 ```
@@ -47,3 +44,8 @@ Pour que l'application démarre automatiquement lors de la mise sous tension de 
 
 Consultez le [journal](journal.md)
 
+## Note finale
+
+Ce projet est un échec. Le son généré par les tube de cuivre n'est pas assez puissant pour servir de sonette d'entrée. Je n'investirai donc pas plus de temps et d'argent sur ce projet. 
+
+J'ai placé un très court [vidéo](https://youtu.be/8ZqvEC9fbHs) sur youtube
